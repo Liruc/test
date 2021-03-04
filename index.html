@@ -1,0 +1,149 @@
+<body></body>
+<script src="/three.js"></script>
+<script>
+  // The "scene" is where stuff in our game will happen:
+  var scene = new THREE.Scene();
+  var flat = {flatShading: true};
+  var light = new THREE.AmbientLight('white', 0.8);
+  scene.add(light);
+
+  // The "camera" is what sees the stuff:
+  var aspectRatio = window.innerWidth / window.innerHeight;
+  var camera = new THREE.PerspectiveCamera(75, aspectRatio, 1, 10000);
+  camera.position.z = 500;
+  scene.add(camera);
+
+  // The "renderer" draws what the camera sees onto the screen:
+  var renderer = new THREE.WebGLRenderer({antialias: true});
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  document.body.appendChild(renderer.domElement);
+
+  // ******** START CODING ON THE NEXT LINE ********
+var esfera = new THREE.SphereGeometry(90, 150, 50);
+var esfera_small = new THREE.SphereGeometry(20,0,0);
+var pupilas = new THREE.SphereGeometry(10,5,0);
+var circle = new THREE.SphereGeometry(85, 30, 40);
+
+var material_plano = new THREE.MeshNormalMaterial(flat);
+
+var color = new THREE.MeshPhongMaterial({color:'#F1D4A9' });
+var material_blanco = new THREE.MeshPhongMaterial({color: 'white'});
+var material_negro = new THREE.MeshPhongMaterial({color: 'black'});
+var material_azul = new THREE.MeshPhongMaterial({color: '#56ECC8'});
+
+var ball = new THREE.Mesh(esfera, color);
+var ball2 = new THREE.Mesh(esfera_small, material_blanco);
+var ball3 = new THREE.Mesh(esfera_small, material_blanco);
+var ball4 = new THREE.Mesh(pupilas,material_negro);
+var ball5 = new THREE.Mesh(pupilas,material_negro);
+var ball6 = new THREE.Mesh(circle,material_azul);
+var ball7 = new THREE.Mesh(esfera_small,color);
+var ball8 = new THREE.Mesh(esfera_small,color);
+var ball9 = new THREE.Mesh(esfera_small,material_azul);
+var ball10 = new THREE.Mesh(esfera_small,material_azul);
+
+scene.add(ball);
+scene.add(ball2);
+scene.add(ball3);
+scene.add(ball4);
+scene.add(ball5);
+scene.add(ball6);
+scene.add(ball7);
+scene.add(ball8);
+scene.add(ball9);
+scene.add(ball10);
+
+ball.position.set(0,0,0);
+ball2.position.set(35,10,75);
+ball3.position.set(-35,10,75);
+ball4.position.set(35,8,95);
+ball5.position.set(-35,8,95);
+ball6.position.set(0,-284,-20);
+ball7.position.set(-175,-205,20);
+ball8.position.set(155,-108,20);
+ball9.position.set(50,-508,20);
+ball10.position.set(-50,-508,20);
+
+var pelo = new THREE.CylinderGeometry(100,0,200,30);
+var body = new THREE.CylinderGeometry(10,90,200,50);
+var pierna = new THREE.CylinderGeometry(15,15,200,50);
+var brazo = new THREE.CylinderGeometry(15,15,190,50);
+var brazo_corto = new THREE.CylinderGeometry(15,15,100,50);
+var dedos = new THREE.CylinderGeometry(2.5,2.5,40,50);
+
+var flat = new THREE.MeshNormalMaterial(flat);
+var marron = new THREE.MeshPhongMaterial({color: '#6F3023'});
+var body_color = new THREE.MeshPhongMaterial({color:'#E3F31F' });
+var pierna_color = new THREE.MeshPhongMaterial({color:'#488EED' });
+var brazo_color = new THREE.MeshPhongMaterial({color:'#DAE61A' });
+var color_nariz= new THREE.MeshPhongMaterial({color:'#f8ad62' });
+
+var pelo_flat = new THREE.Mesh(pelo, marron);
+var body_flat = new THREE.Mesh(body, body_color);
+var pierna1 = new THREE.Mesh(pierna, pierna_color);
+var pierna2 = new THREE.Mesh(pierna, pierna_color);
+var brazo1 = new THREE.Mesh(brazo,brazo_color);
+var brazo2 = new THREE.Mesh(brazo_corto,brazo_color);
+var brazo3 = new THREE.Mesh(brazo_corto,brazo_color);
+var dedos_flat = new THREE.Mesh(dedos,color);
+var dedos1_flat = new THREE.Mesh(dedos,color);
+var nariz =  new THREE.Mesh(dedos,color_nariz);
+
+scene.add(pelo_flat);
+scene.add(body_flat);
+scene.add(pierna1);
+scene.add(pierna2);
+scene.add(brazo1);
+scene.add(brazo2);
+scene.add(brazo3);
+scene.add(dedos_flat);
+scene.add(dedos1_flat);
+scene.add(nariz);
+
+pelo_flat.position.set(0,0,-20);
+
+body_flat.rotation.set(0,0,0*Math.PI/180);
+body_flat.position.set(0,-180,-20);
+
+pierna1.position.set(-50,-430,-20);
+pierna2.position.set(50,-430,-20);
+
+brazo1.rotation.set(0,0,-70*Math.PI/180);
+brazo1.position.set(-80,-170,-20);
+
+brazo2.rotation.set(0,0,60*Math.PI/180);
+brazo2.position.set(65,-165,-20);
+
+brazo3.rotation.set(0,0,150*Math.PI/180);
+brazo3.position.set(130,-162,-20);
+
+dedos_flat.rotation.set(0,0,140*Math.PI/180);
+dedos_flat.position.set(180,-85,-20);
+
+dedos1_flat.rotation.set(0,0,180*Math.PI/180);
+dedos1_flat.position.set(165,-80,-20);
+
+nariz.rotation.set(0,0,180*Math.PI/180);
+nariz.position.set(50,-50,20);
+
+camera.position.set(0,-120,700);
+
+
+
+
+
+
+  // Start Animation
+
+  var clock = new THREE.Clock();
+  function animate() {
+    requestAnimationFrame(animate);
+    var t = clock.getElapsedTime();
+
+    // Animation code goes here...
+
+    renderer.render(scene, camera);
+  }
+
+  animate();
+</script>
